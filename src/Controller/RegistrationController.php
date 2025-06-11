@@ -30,7 +30,7 @@ class RegistrationController extends AbstractController
             $user->setRoles(['ROLE_USER']);
             $user->setCreatedAt(new \DateTime());
             $user->setActive(true);
-            $user->setPoints(0);
+            $user->setPoints(1000);
 
             /** @var string $plainPassword */
             $plainPassword = $form->get('plainPassword')->getData();

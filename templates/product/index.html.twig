@@ -12,26 +12,26 @@
     <div class="form-container">
         <h1>Create new article</h1>
 
-        {{ form_start(product_form, {'attr': {'class': 'article-form'}}) }}
+        {{ form_start(product_form, {'attr': {'class': 'product-form'}}) }}
 
         <div class="symfony-form-row">
             {{ form_label(product_form.name) }}
-            {{ form_widget(product_form.name, {'attr': {'placeholder': 'Enter article title...'}}) }}
+            {{ form_widget(product_form.name, {'attr': {'placeholder': 'Enter product name'}}) }}
         </div>
 
         <div class="symfony-form-row">
             {{ form_label(product_form.description) }}
-            {{ form_widget(product_form.description, {'attr': {'placeholder': 'Write your article description...'}}) }}
+            {{ form_widget(product_form.description, {'attr': {'placeholder': 'Write your product description'}}) }}
         </div>
 
         <div class="symfony-form-row">
             {{ form_label(product_form.price) }}
-            {{ form_widget(product_form.price, {'attr': {'placeholder': 'Write your article description...'}}) }}
+            {{ form_widget(product_form.price, {'attr': {'placeholder': 'Product price'}}) }}
         </div>
 
         <div class="symfony-form-row">
             {{ form_label(product_form.category) }}
-            {{ form_widget(product_form.category, {'attr': {'placeholder': 'Write your article description...'}}) }}
+            {{ form_widget(product_form.category, {'attr': {'placeholder': 'Product category'}}) }}
         </div>
 
         <button type="submit" class="submit-btn">
