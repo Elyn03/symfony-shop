@@ -48,7 +48,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $points = null;
 
     #[ORM\Column]
-    private ?bool $active = null;
+    private ?bool $isActive = null;
 
     /**
      * @var Collection<int, Notification>
@@ -185,12 +185,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function isActive(): ?bool
     {
-        return $this->active;
+        return $this->isActive;
     }
 
-    public function setActive(bool $active): static
+    public function setIsActive(bool $isActive): static
     {
-        $this->active = $active;
+        $this->isActive = $isActive;
 
         return $this;
     }
