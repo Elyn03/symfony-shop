@@ -12,5 +12,27 @@
     <h1>Hello {{ profile.lastName }} {{ profile.firstName }}! 😎</h1>
 
     {{ dump(profile) }}
+    {{ form_start(profileForm, {'attr': {'class': 'product-form'}}) }}
+    <div class="symfony-form-row">
+        <label for="">email</label>
+        {{ profile.email }}
+    </div>
+
+    <div class="symfony-form-row">
+        {{ form_label(profileForm.lastName) }}
+        {{ form_widget(profileForm.lastName, {'attr': {'placeholder': profile.lastName}}) }}
+    </div>
+
+    <div class="symfony-form-row">
+        {{ form_label(profileForm.firstName) }}
+        {{ form_widget(profileForm.firstName, {'attr': {'placeholder': profile.firstName}}) }}
+    </div>
+
+
+    <button type="submit" class="submit-btn">
+        Save
+    </button>
+    {{ form_end(profileForm) }}
+
 </div>
 {% endblock %}
