@@ -4,27 +4,26 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
 </style>
 
-<div class="example-wrapper">
+<div class="items-container">
 
-    <h1>
-        everyone products
-    </h1>
     {% for product in allProducts %}
-        {{ dump(product) }}
-        <div>
-            <a href={{ path('app_detail_product', { id: product.id}) }}>
-                {{ product.name }}
-            </a>
-            <p>{{ product.createdAt|date("m/d/Y") }}</p>
-            <p>{{ product.user.lastName }} {{ product.user.firstName }}</p>
-            <p>{{ product.name }}</p>
-            <p>{{ product.description }}</p>
-            <p>{{ product.price }}</p>
-            <p>{{ product.category }}</p>
+        <div class="item-card">
+            <div class="item-image"></div>
+            <div class="item-texts">
+                <div class="info-one">
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.description }}</p>
+                </div>
+                <div class="info-two">
+                    <span>{{ product.price }} pts</span>
+                    <a href={{ path('app_detail_product', { id: product.id}) }}>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     {% endfor %}
 

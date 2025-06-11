@@ -15,9 +15,73 @@
 }
 
 body {
-    background-color: var(--au-lait);
+    background-color: var(--creme-brulee);
 }
 
 h1 {
     font-size: 48px;
+}
+.items-container {
+    padding: 24px 12px;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 20%);
+    gap: 12px
+}
+.item-card {
+    padding: 12px;
+    background-color: var(--au-lait);
+    border-radius: 50px 50px 25px 25px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: space-between;
+}
+.item-image, .user-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 38px;
+    background-color: var(--lunar-eclipse);
+    background-image: url('../images/clothes.jpg');
+    background-size: cover;
+}
+.user-image {
+    background-image: url('../images/user.jpg') !important;
+}
+.item-texts {
+    padding: 0 12px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+}
+.info-one {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.info-two {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.info-two a {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background-color: var(--creme-brulee);
+    text-decoration: none;
+}
+.items-container a:hover {
+    background-color: var(--creme-brulee);
+    transition: 0.5s;
 }
