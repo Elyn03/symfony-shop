@@ -2,20 +2,50 @@
 
 {% block title %}Register{% endblock %}
 
+{% block stylesheets %}
+    <style>
+    </style>
+{% endblock %}
+
 {% block body %}
-    <h1>Register</h1>
+<div class="content">
+    <div class="register-form">
+        <h1>Register</h1>
 
-    {{ form_errors(registrationForm) }}
+        {{ form_start(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.lastName) }}
-        {{ form_row(registrationForm.firstName) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <div class="register-form-row">
+            {{ form_label(registrationForm.lastName) }}
+            {{ form_widget(registrationForm.lastName) }}
+        </div>
+
+        <div class="register-form-row">
+            {{ form_label(registrationForm.firstName) }}
+            {{ form_widget(registrationForm.firstName) }}
+        </div>
+
+        <div class="register-form-row">
+            {{ form_label(registrationForm.email) }}
+            {{ form_widget(registrationForm.email) }}
+        </div>
+
+        <div class="register-form-row">
+            {{ form_label(registrationForm.plainPassword) }}
+            {{ form_widget(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+        </div>
+
+        <div class="agree-terms-box">
+            {{ form_label(registrationForm.agreeTerms) }}
+            {{ form_widget(registrationForm.agreeTerms) }}
+        </div>
 
         <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+
+        <a href="{{ path('app_login') }}" class="sign-link">Already have an account ? Sign in</a>
+
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
 {% endblock %}

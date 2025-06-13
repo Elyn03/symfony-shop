@@ -33,6 +33,12 @@ body {
 h1 {
     font-size: 48px;
     font-family: "modern-love", sans-serif;
+    color: var(--inkwell)
+}
+
+a {
+    text-decoration: none;
+    color: var(--inkwell);
 }
 
 .items-container {
@@ -98,4 +104,89 @@ h1 {
 .items-container a:hover {
     background-color: var(--creme-brulee);
     transition: 0.5s;
+}
+
+
+.register-form {
+    margin: 0 auto;
+    padding: 2rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #F0F0F0;
+    border-radius: 12px;
+}
+
+.register-form h1 {
+    text-align: center;
+}
+
+.register-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px
+}
+
+.register-form form div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+}
+
+label {
+    font-weight: 600;
+    color: var(--inkwell);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: var(--lunar-eclipse);
+    outline: none;
+}
+
+.register-form .agree-terms-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.agree-terms-box input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    accent-color: var(--lunar-eclipse);
+    cursor: pointer;
+}
+
+.btn {
+    width: 100%;
+    margin: 12px 0;
+    padding: 12px;
+    background-color: var(--lunar-eclipse);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--inkwell);
+}
+
+.sign-link {
+    text-align: center;
+    color: var(--creme-brulee);
 }
