@@ -2,7 +2,7 @@
     --inkwell: #2C3639;
     --lunar-eclipse: #3F4E4F;
     --creme-brulee: #A27B5B;
-    --au-lait: #DCD7C9;
+    --au-lait: #ccc6b6;
 }
 
 * {
@@ -128,7 +128,7 @@ a {
     gap: 18px
 }
 
-.register-form form div {
+.form-row {
     display: flex;
     flex-direction: column;
     gap: 8px

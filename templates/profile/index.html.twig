@@ -1,38 +1,76 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfileController!{% endblock %}
+{% block title %}Your Profile{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .profile-container {
+            padding-top: 24px;
+            display: flex;
+            gap: 80px;
+        }
+
+        .profile-container img {
+            height: 500px;
+            aspect-ratio: 1 / 1;
+            border-radius: 12px;
+        }
+
+        .profile-container form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .form-group input:focus {
+            border-color: #9a8c98;
+            outline: none;
+        }
+
+        .static-field {
+            background: var(--au-lait);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: var(--inkwell);
+        }
+    </style>
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="content">
+        <h1>Welcome back {{ profile.firstName }} {{ profile.lastName }} ✨</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ profile.lastName }} {{ profile.firstName }}! 😎</h1>
+        <div class="profile-container">
+            <img src="{{ asset("images/user.jpg") }}" alt="">
 
-    {{ dump(profile) }}
-    {{ form_start(profileForm, {'attr': {'class': 'product-form'}}) }}
-    <div class="symfony-form-row">
-        <label for="">email</label>
-        {{ profile.email }}
+            {{ form_start(profileForm) }}
+
+            <div class="form-row">
+                {{ form_label(profileForm.lastName) }}
+                {{ form_widget(profileForm.lastName, {'attr': {'placeholder': 'Last name'}}) }}
+            </div>
+
+            <div class="form-row">
+                {{ form_label(profileForm.firstName) }}
+                {{ form_widget(profileForm.firstName, {'attr': {'placeholder': 'First name'}}) }}
+            </div>
+
+            <div class="form-row">
+                <label>Email</label>
+                <div class="static-field">{{ profile.email }}</div>
+            </div>
+
+            <div class="form-row">
+                <label>Points</label>
+                <div class="static-field">{{ profile.points }}</div>
+            </div>
+
+            <button type="submit" class="btn">Save changes</button>
+
+            {{ form_end(profileForm) }}
+
+        </div>
     </div>
-
-    <div class="symfony-form-row">
-        {{ form_label(profileForm.lastName) }}
-        {{ form_widget(profileForm.lastName, {'attr': {'placeholder': profile.lastName}}) }}
-    </div>
-
-    <div class="symfony-form-row">
-        {{ form_label(profileForm.firstName) }}
-        {{ form_widget(profileForm.firstName, {'attr': {'placeholder': profile.firstName}}) }}
-    </div>
-
-
-    <button type="submit" class="submit-btn">
-        Save
-    </button>
-    {{ form_end(profileForm) }}
-
-</div>
 {% endblock %}
