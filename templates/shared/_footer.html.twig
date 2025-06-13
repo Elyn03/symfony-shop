@@ -1,0 +1,51 @@
+<style>
+    footer {
+        padding: 20px;
+        height: 300px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+        border-top: 1px solid #ccc;
+    }
+
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        list-style-type: none;
+    }
+    .footer-container li a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+    }
+</style>
+
+<footer>
+    <div>
+        <span>Brand</span>
+    </div>
+    <ul class="footer-container">
+        <li>
+            <a href="{{ path('app_home') }}">
+                <i class="fa-brands fa-instagram"></i>
+                @brand
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('app_user') }}">
+                <i class="fa-brands fa-linkedin-in"></i>
+                Brand
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('app_product') }}">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Information général
+            </a>
+        </li>
+    </ul>
+</footer>
