@@ -1,11 +1,17 @@
 <style>
     nav {
-        padding: 20px;
+        padding: 8px 20px;
         width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         background-color: #f0f0f0;
         border-bottom: 1px solid #ccc;
+    }
+
+    .menu-logo {
+        height: 50px;
+        aspect-ratio: 1 / 1;
     }
 
     .menu-container {
@@ -13,25 +19,33 @@
         gap: 24px;
         list-style-type: none;
     }
+
     .menu-container li a {
+        padding: 12px 18px;
+    }
+    .menu-container li a, .points-pill {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 12px;
         text-decoration: none;
+    }
+
+    .points-pill {
+        padding: 12px 18px;
+        background: var(--lunar-eclipse);
+        border-radius: 12px;
+        color: var(--au-lait);
+    }
+    .points-pill i {
+        color: var(--au-lait);
     }
 </style>
 
 <nav>
-    <div>
-        <span>Brand</span>
-    </div>
+    <a class="menu-logo" href="{{ path('app_home') }}">
+        <img class="menu-logo" src="{{ asset("images/logo.svg") }}" alt="VivaMode">
+    </a>
     <ul class="menu-container">
-        <li>
-            <a href="{{ path('app_home') }}">
-                <i class="fa-solid fa-house"></i>
-                Home
-            </a>
-        </li>
         <li>
             <a href="{{ path('app_user') }}">
                 <i class="fa-solid fa-users"></i>
@@ -41,14 +55,27 @@
         <li>
             <a href="{{ path('app_product') }}">
                 <i class="fa-solid fa-cart-shopping"></i>
-                My products
+                All products
             </a>
         </li>
+        <li>
+            <a href="{{ path('app_notification') }}">
+                <i class="fa-solid fa-bell"></i>
+                Notifications
+            </a>
+        </li>
+
         <li>
             <a href="{{ path('app_profile') }}">
                 <i class="fa-solid fa-user"></i>
                 My profile
             </a>
         </li>
+        {% if app.user %}
+            <li class="points-pill">
+                <i class="fa-solid fa-wallet"></i>
+                {{ app.user.points }}pts
+            </li>
+        {% endif %}
     </ul>
 </nav>

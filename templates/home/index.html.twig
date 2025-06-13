@@ -4,28 +4,41 @@
 
 {% block body %}
 <style>
-
+    .inactivate-band {
+        margin: 16px 0;
+        padding: 16px;
+        background-color: var(--lunar-eclipse);
+        color: var(--au-lait);
+        text-align: center;
+        text-transform: uppercase;
+    }
 </style>
 
-<div class="items-container">
+<div class="content">
+    {% if app.user and app.user.isActive is not true %}
+        <div class="inactivate-band">Vous avez été désactivé</div>
+    {% endif %}
 
-    {% for product in allProducts %}
-        <div class="item-card">
-            <div class="item-image"></div>
-            <div class="item-texts">
-                <div class="info-one">
-                    <h2>{{ product.name }}</h2>
-                    <p>{{ product.description }}</p>
-                </div>
-                <div class="info-two">
-                    <span>{{ product.price }} pts</span>
-                    <a href={{ path('app_detail_product', { id: product.id}) }}>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
+    <h1>Welcome to VivaMode</h1>
+
+    <div class="items-container">
+        {% for product in allProducts %}
+            <div class="item-card">
+                <div class="item-image"></div>
+                <div class="item-texts">
+                    <div class="info-one">
+                        <h2>{{ product.name }}</h2>
+                        <p>{{ product.description }}</p>
+                    </div>
+                    <div class="info-two">
+                        <span>{{ product.price }} pts</span>
+                        <a href={{ path('app_detail_product', { id: product.id}) }}>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
-
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
