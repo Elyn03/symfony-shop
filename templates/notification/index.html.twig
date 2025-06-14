@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notifications{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .notification-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notification {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 24px;
+        }
+
+        .notification i {
+            padding: 8px;
+            border-radius: 4px;
+            background-color: var(--au-lait);
+        }
+        .notification-card {
+            width: 100%;
+            gap: 12px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notification:last-child {
+            border-bottom: none;
+        }
+
+        .notification-info {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .notification-info .notification-type {
+            padding: 4px 12px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            color: #F0F0F0;
+        }
+        .edit {
+            background-color: var(--inkwell);
+        }
+        .buy {
+            background-color: var(--lunar-eclipse);
+        }
+
+        .notification-title {
+            font-weight: bold;
+            width: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1>Latest Notifications 📬</h1>
+
+        <div class="notification-list">
+            {% for notification in notifications %}
+                <div class="notification">
+                    <i class="fa-solid fa-bell"></i>
+                    <div class="notification-card">
+                        <div class="notification-info">
+                            <div class="notification-type {{ notification.label['type'] == "PRODUCT_UPDATED" ? 'edit' : 'buy' }}">
+                                {{ notification.label['type'] == "PRODUCT_UPDATED" ? 'Modification' : 'Achat' }}
+                            </div>
+                            <span>{{ notification.label['date']['date']|date('d F Y, H:i') }}</span>
+                        </div>
+                        <span class="notification-title">
+                            {{ notification.label['title'] }}
+                        </span>
+                    </div>
+                </div>
+            {% else %}
+                <div class="notification">
+                    <span class="notification-title">You have no notifications for now.</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

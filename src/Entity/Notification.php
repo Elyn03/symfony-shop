@@ -15,8 +15,8 @@ class Notification
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $label = null;
+    #[ORM\Column]
+    private array $label = [];
 
     #[ORM\ManyToOne(inversedBy: 'notifications')]
     #[ORM\JoinColumn(nullable: false)]
@@ -33,15 +33,14 @@ class Notification
         return $this->id;
     }
 
-    public function getLabel(): ?string
+    public function getLabel(): array
     {
         return $this->label;
     }
 
-    public function setLabel(string $label): static
+    public function setLabel(array $label): static
     {
         $this->label = $label;
-
         return $this;
     }
 
