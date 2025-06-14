@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Notification;
 use App\Entity\Product;
+use App\Service\SendNotification;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,5 +20,22 @@ final class DetailProductController extends AbstractController
             'controller_name' => 'DetailProductController',
             'product' => $product,
         ]);
+    }
+
+    #[Route('/buy/product/{id}', name: 'app_buy_product', methods: ['POST'])]
+    public function buyProduct(string $id, EntityManagerInterface $entityManager, SendNotification $sendNotification): Response
+    {
+        $product = $entityManager->getRepository(Product::class)->find($id);
+        $user = $this->getUser();
+
+        $newPoints = $user->getPoints() - $product->getPrice();
+        $user->setPoints($newPoints);
+        $entityManager->persist($product);
+        $entityManager->flush();
+
+        $sendNotification->sendNotification($user, "PRODUCT_BOUGHT", $product->getName(), $entityManager);
+
+
+        return $this->redirectToRoute('app_detail_product', ['id' => $id]);
     }
 }

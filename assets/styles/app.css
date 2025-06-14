@@ -28,6 +28,7 @@ body {
     width: 1200px;
     display: flex;
     flex-direction: column;
+    gap: 24px;
 }
 
 h1 {
@@ -41,13 +42,17 @@ a {
     color: var(--inkwell);
 }
 
-.items-container {
+.items-container, .products-container {
     padding: 24px 0;
     width: 100%;
     display: grid;
     justify-content: space-around;
     grid-template-columns: repeat(3, 30%);
     gap: 24px;
+}
+.products-container {
+    height: auto;
+    grid-template-columns: repeat(2, 45%) !important;
 }
 .item-card {
     padding: 12px;
@@ -59,6 +64,9 @@ a {
     flex-direction: column;
     gap: 12px;
     justify-content: space-between;
+}
+.products-container .item-image {
+    height: 25% !important;
 }
 .item-image, .user-image {
     width: 100%;
@@ -122,13 +130,14 @@ a {
     text-align: center;
 }
 
-.register-form form {
+.register-form form, .create-form-container form {
     display: flex;
     flex-direction: column;
     gap: 18px
 }
 
 .form-row {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 8px
@@ -140,8 +149,12 @@ label {
 }
 
 input[type="text"],
+input[type="textarea"],
+input[type="number"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+textarea,
+select {
     width: 100%;
     padding: 0.6rem;
     border: 1px solid #ccc;
