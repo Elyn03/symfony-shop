@@ -1,51 +1,130 @@
 <style>
     footer {
-        padding: 20px;
-        height: 300px;
+        padding: 24px 80px;
         width: 100%;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
         background-color: #f0f0f0;
         border-top: 1px solid #ccc;
+        gap: 40px;
     }
 
     .footer-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+    }
+
+    .footer-general-infos {
+        display: flex;
+        gap: 24px;
+    }
+    .footer-section {
+        width: 200px;
         display: flex;
         flex-direction: column;
-        gap: 24px;
-        list-style-type: none;
+        gap: 12px;
     }
-    .footer-container li a {
+
+    .footer-section h3 {
+        color: var(--inkwell);
+    }
+
+    .footer-section ul {
+        list-style: none;
         display: flex;
-        align-items: center;
+        flex-direction: column;
         gap: 8px;
+    }
+
+    .footer-section ul li a {
+        color: var(--inkwell);
         text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+        color: var(--inkwell);
+    }
+
+    .footer-logo {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: var(--inkwell);
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 12px;
+        margin-top: 12px;
+    }
+
+    .social-icons a {
+        font-size: 1.2rem;
+        transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+        color: #3eb082;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        font-size: 16px;
+        color: var(--lunar-eclipse);
     }
 </style>
 
 <footer>
-    <div>
-        <span>Brand</span>
+    <div class="footer-container">
+        <div class="footer-viva">
+            <div class="footer-logo">VivaStyle</div>
+            <p>La mode à votre image. Vêtements tendance, confort et style réunis.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-general-infos">
+            <div class="footer-section">
+                <h3>À propos</h3>
+                <ul>
+                    <li><a href="#">Notre histoire</a></li>
+                    <li><a href="#">Équipe</a></li>
+                    <li><a href="#">Boutiques</a></li>
+                    <li><a href="#">Carrières</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Aide</h3>
+                <ul>
+                    <li><a href="#">Service client</a></li>
+                    <li><a href="#">Retours</a></li>
+                    <li><a href="#">Suivi de commande</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Informations légales</h3>
+                <ul>
+                    <li><a href="#">Conditions générales</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <ul class="footer-container">
-        <li>
-            <a href="{{ path('app_home') }}">
-                <i class="fa-brands fa-instagram"></i>
-                @brand
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('app_user') }}">
-                <i class="fa-brands fa-linkedin-in"></i>
-                Brand
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('app_product') }}">
-                <i class="fa-solid fa-cart-shopping"></i>
-                Information général
-            </a>
-        </li>
-    </ul>
+
+    <div class="footer-bottom">
+        © {{ "now"|date("Y") }} VivaStyle. Tous droits réservés.
+    </div>
 </footer>
