@@ -37,12 +37,14 @@ products: Tous les produits
 enabled_account: Tous les produits
 points: pts
 created_at: Ajouté le
+last_update: Dernière mise à jour le
 buy: Acheter
 notifications: Toutes les notifications
 no_notifications: Vous n'avez aucune notification pour le moment
 buy_label: Achat
 delete_label: Suppression
 edit_label: Modification
+created_label: Création
 give_points: Donner 1000 points à tous les comptes actives
 menu:
     users: Utilisateurs
@@ -67,4 +69,9 @@ footer:
     cookies: Cookies
     legal_notice: Mentions légales
     copyright: Tous droits réservés.
-
+notification:
+    updated: a été modifié !
+    bought: a été acheté !
+    deleted: a été supprimé !
+    created: Un nouveau produit a été ajouté -
+    default: Non trouvé

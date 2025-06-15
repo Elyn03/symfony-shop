@@ -37,6 +37,7 @@ products: All products
 enabled_account: All products
 points: pts
 created_at: Added on
+last_update: Last update at
 buy: Buy
 notifications: All notifications
 no_notifications: You have no notifications at the moment
@@ -67,3 +68,9 @@ footer:
     cookies: Cookies
     legal_notice: Legal notice
     copyright: All rights reserved.
+notification:
+    updated: has been updated !
+    bought: has been bought !
+    deleted: has been deleted !
+    created: A new product has been create -
+    default: Not found

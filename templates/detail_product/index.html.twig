@@ -57,6 +57,11 @@
             <div class="product-date">
                 {% trans %}created_at{% endtrans%} {{ product.createdAt|date("d/m/Y") }}
             </div>
+            {% if product.updatedAt is not null %}
+            <div class="product-date">
+                {% trans %}last_update{% endtrans%} {{ product.updatedAt|date("d/m/Y H:i") }}
+            </div>
+            {% endif %}
         </div>
 
         <div class="product-description">
@@ -70,7 +75,7 @@
         <form class="activate-form" action="{{ path('app_buy_product', { id: product.id }) }}" method="post">
             <button class="activate-button" type="submit">
                 <i class="fa-solid fa-cart-plus"></i>
-                {% trans %}uy{% endtrans %}
+                {% trans %}buy{% endtrans %}
             </button>
         </form>
     </div>
