@@ -45,6 +45,7 @@ buy_label: Purchase
 delete_label: Deletion
 edit_label: Edit
 give_points: Give 1000 points to all active users
+is_disabled: You have been disabled
 menu:
     users: Users
     products: Products

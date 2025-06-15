@@ -11,12 +11,13 @@
         color: var(--au-lait);
         text-align: center;
         text-transform: uppercase;
+        border-radius: 12px;
     }
 </style>
 
 <div class="content">
     {% if app.user and app.user.isActive is not true %}
-        <div class="inactivate-band"></div>
+        <div class="inactivate-band">{% trans %}is_disabled{% endtrans %}</div>
     {% endif %}
 
     <h1>{% trans %}home{% endtrans %} 👋</h1>

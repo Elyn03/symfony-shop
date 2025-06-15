@@ -46,6 +46,7 @@ delete_label: Suppression
 edit_label: Modification
 created_label: Création
 give_points: Donner 1000 points à tous les comptes actives
+is_disabled: Vous avez été désactivé
 menu:
     users: Utilisateurs
     products: Produits
