@@ -4,14 +4,26 @@
 
 {% block stylesheets %}
     <style>
+        .log-error {
+            margin: 16px 0;
+            padding: 16px;
+            background-color: #974444;
+            color: var(--au-lait);
+            text-align: center;
+            text-transform: uppercase;
+            border-radius: 12px;
+        }
 
     </style>
 {% endblock %}
 
 {% block body %}
 <div class="content">
-    <div class="register-form">
+    {% if error %}
+        <div class="log-error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
 
+    <div class="register-form">
         <form method="post">
             <h1>{% trans %}sign_in{% endtrans %}</h1>
 

@@ -24,11 +24,11 @@
             color: var(--lunar-eclipse);
         }
 
-        .activate-form {
+        .buy-form {
             margin-top: 20px;
         }
 
-        .activate-button {
+        .buy-button {
             padding: 14px 28px;
             font-size: 1.1rem;
             background: var(--inkwell);
@@ -42,13 +42,18 @@
             gap: 10px;
         }
 
-        .activate-button:hover {
-            transform: scale(1.02);
-        }
-
-        .activate-button i {
+        .buy-button i {
             color: #F0F0F0;
         }
+
+        .disabled-buy-button, .disabled-buy-button i {
+            color: var(--creme-brulee) !important;
+        }
+        .buy-form .disabled-buy-button {
+            background-color: rgba(204, 198, 182, 0.5) !important;
+            cursor: auto;
+        }
+
     </style>
 
     <div class="content">
@@ -72,11 +77,13 @@
             {{ product.price }} {% trans %}points{% endtrans %}
         </div>
 
-        <form class="activate-form" action="{{ path('app_buy_product', { id: product.id }) }}" method="post">
-            <button class="activate-button" type="submit">
-                <i class="fa-solid fa-cart-plus"></i>
-                {% trans %}buy{% endtrans %}
-            </button>
-        </form>
+        {% if app.user and app.user.isActive %}
+            <form class="buy-form" action="{{ path('app_buy_product', { id: product.id }) }}" method="post">
+                <button class="buy-button {{ product.price > app.user.points ? "disabled-buy-button" : "" }}" type="submit" {% if product.price > app.user.points %}disabled{% endif %}>
+                    <i class="fa-solid fa-cart-plus"></i>
+                    {% trans %}buy{% endtrans %}
+                </button>
+            </form>
+        {% endif %}
     </div>
 {% endblock %}

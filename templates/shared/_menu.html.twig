@@ -79,7 +79,11 @@
         <li>
             <a href="{{ path('app_profile') }}">
                 <i class="fa-solid fa-user"></i>
-                {% trans %}menu.profile{% endtrans %}
+                {% if app.user %}
+                    {% trans %}menu.profile{% endtrans %}
+                {% else %}
+                    {% trans %}sign_in{% endtrans %}
+                {% endif %}
             </a>
         </li>
         {% if app.user %}

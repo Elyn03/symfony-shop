@@ -30,12 +30,11 @@ final class DetailProductController extends AbstractController
 
         $newPoints = $user->getPoints() - $product->getPrice();
         $user->setPoints($newPoints);
+
         $entityManager->persist($product);
         $entityManager->flush();
 
         $sendNotification->sendNotification($user, "PRODUCT_BOUGHT", $product->getName());
-
-
         return $this->redirectToRoute('app_detail_product', ['id' => $id]);
     }
 }
