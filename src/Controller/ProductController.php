@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductForm;
+use App\Service\SendNotification;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,10 +17,10 @@ final class ProductController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $product = new Product();
-        $form = $this->createForm(ProductForm::class, $product);
-        $form->handleRequest($request);
+        $createForm = $this->createForm(ProductForm::class, $product);
+        $createForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($createForm->isSubmitted() && $createForm->isValid()) {
             $product->setCreatedAt(new \DateTime());
             $product->setUser($this->getUser());
 
@@ -29,11 +30,48 @@ final class ProductController extends AbstractController
             return $this->redirectToRoute('app_product');
         }
 
-        $myProducts = $entityManager->getRepository(Product::class)->findAll();
+        $allProducts = $entityManager->getRepository(Product::class)->findAll();
+
+        // CREATE edit forms for each product
+        $editForms = [];
+        foreach ($allProducts as $product) {
+            $form = $this->createForm(ProductForm::class, $product, [
+                'action' => $this->generateUrl('app_product_action', ['id' => $product->getId()]),
+                'method' => 'POST',
+            ]);
+            $editForms[$product->getId()] = $form->createView();
+        }
 
         return $this->render('product/index.html.twig', [
-            'product_form' => $form,
-            'products' => $myProducts,
+            'create_product_form' => $createForm,
+            'edit_product_form' => $editForms,
+            'products' => $allProducts,
         ]);
     }
+
+    #[Route('/product/action/{id}', name: 'app_product_action', methods: ['POST'])]
+    public function action(Product $product, Request $request, EntityManagerInterface $entityManager, SendNotification $sendNotification): Response
+    {
+        $action = $request->request->get('action');
+
+        if ($action === "delete") {
+            $entityManager->remove($product);
+            $entityManager->flush();
+
+            $sendNotification->sendNotification($this->getUser(), "PRODUCT_DELETED", $product->getName(), $entityManager);
+            return $this->redirectToRoute('app_product');
+        }
+
+        $form = $this->createForm(ProductForm::class, $product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            $sendNotification->sendNotification($this->getUser(), "PRODUCT_UPDATED", $product->getName(), $entityManager);
+        }
+
+        return $this->redirectToRoute('app_product');
+    }
+
 }

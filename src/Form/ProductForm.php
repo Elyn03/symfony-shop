@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ProductForm extends AbstractType
 {
@@ -13,7 +15,15 @@ class ProductForm extends AbstractType
         $builder
             ->add('name')
             ->add('price')
-            ->add('category')
+            ->add('category', ChoiceType::class, [
+                'choices' => [
+                    'Casual' => 'casual',
+                    'Sporty' => 'sporty',
+                    'Boho' => 'boho',
+                    'Streetwear' => 'streetwear',
+                    'Formal' => 'formal',
+                ]
+            ])
             ->add('description')
         ;
     }
