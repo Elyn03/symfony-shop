@@ -3,12 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Message\GivePointsMessage;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
@@ -36,15 +34,6 @@ final class UserController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return $this->redirectToRoute('app_user');
-    }
-
-    #[Route('/users/give/points', name: 'app_user_give_points', methods: ['POST'])]
-    #[IsGranted("ROLE_ADMIN")]
-    public function givePoints(MessageBusInterface $messageBus): Response
-    {
-        $message = new GivePointsMessage(1000);
-        $messageBus->dispatch($message);
         return $this->redirectToRoute('app_user');
     }
 }

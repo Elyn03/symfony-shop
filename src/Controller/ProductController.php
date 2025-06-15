@@ -77,4 +77,30 @@ final class ProductController extends AbstractController
         return $this->redirectToRoute('app_product');
     }
 
+    #[Route('/product/created/by/me', name: 'app_product_created_by', methods: ['GET'])]
+    #[IsGranted("ROLE_ADMIN")]
+    public function getCreatedBy(Us $product, Request $request, EntityManagerInterface $entityManager, SendNotification $sendNotification): Response
+    {
+        $action = $request->request->get('action');
+
+        if ($action === "delete") {
+            $entityManager->remove($product);
+            $entityManager->flush();
+
+            $sendNotification->sendNotification($this->getUser(), "PRODUCT_DELETED", $product->getName());
+            return $this->redirectToRoute('app_product');
+        }
+
+        $form = $this->createForm(ProductForm::class, $product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            $sendNotification->sendNotification($this->getUser(), "PRODUCT_UPDATED", $product->getName());
+        }
+
+        return $this->redirectToRoute('app_product');
+    }
+
 }
