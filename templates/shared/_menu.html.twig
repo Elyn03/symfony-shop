@@ -56,25 +56,26 @@
                 {{ app.request.locale }}
             </a>
         </li>
-        <li>
-            <a href="{{ path('app_user') }}">
-                <i class="fa-solid fa-users"></i>
-                {% trans %}menu.users{% endtrans %}
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('app_product') }}">
-                <i class="fa-solid fa-cart-shopping"></i>
-                {% trans %}menu.products{% endtrans %}
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('app_notification') }}">
-                <i class="fa-solid fa-bell"></i>
-                {% trans %}menu.notifications{% endtrans %}
-            </a>
-        </li>
-
+        {% if is_granted('ROLE_ADMIN') %}
+            <li>
+                <a href="{{ path('app_user') }}">
+                    <i class="fa-solid fa-users"></i>
+                    {% trans %}menu.users{% endtrans %}
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('app_product') }}">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    {% trans %}menu.products{% endtrans %}
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('app_notification') }}">
+                    <i class="fa-solid fa-bell"></i>
+                    {% trans %}menu.notifications{% endtrans %}
+                </a>
+            </li>
+        {% endif %}
         <li>
             <a href="{{ path('app_profile') }}">
                 <i class="fa-solid fa-user"></i>

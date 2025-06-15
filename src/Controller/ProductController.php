@@ -10,10 +10,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class ProductController extends AbstractController
 {
-    #[Route('/product', name: 'app_product')]
+    #[Route('/products', name: 'app_product')]
+    #[IsGranted("ROLE_ADMIN")]
     public function index(Request $request, EntityManagerInterface $entityManager, SendNotification $sendNotification): Response
     {
         $product = new Product();
@@ -50,6 +52,7 @@ final class ProductController extends AbstractController
     }
 
     #[Route('/product/action/{id}', name: 'app_product_action', methods: ['POST'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function action(Product $product, Request $request, EntityManagerInterface $entityManager, SendNotification $sendNotification): Response
     {
         $action = $request->request->get('action');

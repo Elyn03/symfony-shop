@@ -16,12 +16,12 @@ final class HomeController extends AbstractController
     public function index(EntityManagerInterface $entityManager): Response
     {
         $allProducts = $entityManager->getRepository(Product::class)->findAll();
-        $admins = $entityManager->getRepository(User::class)->findAllAdmins();
+        $isAdmin = in_array('ROLE_ADMIN', $this->getUser()->getRoles(), true);
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'allProducts' => $allProducts,
-            'admins' => $admins,
+            'isAdmin' => $isAdmin,
         ]);
     }
 

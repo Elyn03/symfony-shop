@@ -12,12 +12,11 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class NotificationController extends AbstractController
 {
-    #[Route('/notification', name: 'app_notification')]
-//    #[IsGranted("ROLE_ADMIN")]
+    #[Route('/notifications', name: 'app_notification')]
+    #[IsGranted("ROLE_ADMIN")]
     public function index(EntityManagerInterface $entityManager): Response
     {
         $notifications = $entityManager->getRepository(Notification::class)->findBy([], ['createdAt' => 'DESC']);
-
 
         return $this->render('notification/index.html.twig', [
             'controller_name' => 'NotificationController',
