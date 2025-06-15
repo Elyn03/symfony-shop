@@ -21,17 +21,33 @@
         cursor: pointer;
         color: var(--au-lait) !important;
     }
+    .activate-form {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
     .activate-button {
-        width: 35px;
+        padding: 4px 8px;
         height: 35px;
         display: flex;
         justify-content: center;
         align-items: center;
         border: none;
+        gap: 8px;
         background: transparent;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .active {
+        background: var(--inkwell);
+    }
+    .active span, .active i {
+        color: var(--au-lait);
     }
 </style>
 
+<div class="content">
     <div class="items-container">
         <form class="give-points-container" action="{{ path('app_user_give_points') }}" method="post">
             <button type="submit">
@@ -40,32 +56,29 @@
         </form>
 
         {% for user in users %}
-        <div class="item-card">
-            <div class="user-image"></div>
-            <div class="item-texts">
-                <div class="info-one">
-                    <h2>{{ user.lastName }} {{ user.firstName }}</h2>
-                    <hp>{{ user.points }}</hp>
-                </div>
-                <div class="info-two">
-                    {% if user.isActive %}
-                        <span>Account activate</span>
-                    {% else %}
-                        <span>Account disable</span>
-                    {% endif %}
-                    <form action="{{ path('app_user_toggle_active', { id: user.id }) }}" method="post">
-                        <button class="activate-button" type="submit">
-                            {% if user.isActive %}
-                                <i class="fa-solid fa-circle-pause"></i>
-                            {% else %}
+            <div class="item-card">
+                <div class="user-image"></div>
+                <div class="item-texts">
+                    <div class="info-one">
+                        <h2>{{ user.lastName }} {{ user.firstName }}</h2>
+                        <p>{{ user.points }} pts</p>
+                    </div>
+                    <div class="info-two">
+                        <form class="activate-form" action="{{ path('app_user_toggle_active', { id: user.id }) }}" method="post">
+                            <button class="activate-button {{ user.isActive ? 'active' : 'inactive' }}" type="submit">
+                                <span>Active</span>
                                 <i class="fa-solid fa-circle-play"></i>
-                            {% endif %}
-                        </button>
-                    </form>
+                            </button>
+
+                            <button class="activate-button {{ user.isActive is not true ? 'active' : 'inactive' }}" type="submit">
+                                <span>Inactive</span>
+                                <i class="fa-solid fa-circle-pause"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
-
 {% endblock %}

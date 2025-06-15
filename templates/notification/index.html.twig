@@ -45,12 +45,18 @@
             border-radius: 8px;
             text-transform: uppercase;
             color: #F0F0F0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .edit {
             background-color: var(--inkwell);
         }
         .buy {
             background-color: var(--lunar-eclipse);
+        }
+        .delete {
+            background-color: #597B7E;
         }
 
         .notification-title {
@@ -66,12 +72,13 @@
 
         <div class="notification-list">
             {% for notification in notifications %}
+
                 <div class="notification">
                     <i class="fa-solid fa-bell"></i>
                     <div class="notification-card">
                         <div class="notification-info">
-                            <div class="notification-type {{ notification.label['type'] == "PRODUCT_UPDATED" ? 'edit' : 'buy' }}">
-                                {{ notification.label['type'] == "PRODUCT_UPDATED" ? 'Modification' : 'Achat' }}
+                            <div class="notification-type {{ notification.label['type'] == "PRODUCT_UPDATED" ? 'edit' : notification.label['type'] == "PRODUCT_BOUGHT" ? 'buy' : 'delete' }}">
+                                {{ notification.label['type'] == "PRODUCT_UPDATED" ? 'Modification' : notification.label['type'] == "PRODUCT_BOUGHT" ? 'Achat' : 'Suppression' }}
                             </div>
                             <span>{{ notification.label['date']['date']|date('d F Y, H:i') }}</span>
                         </div>

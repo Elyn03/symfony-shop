@@ -67,6 +67,11 @@
                 <div class="static-field">{{ profile.points }}</div>
             </div>
 
+            <div class="form-row">
+                <label>Compte</label>
+                <div class="static-field">{{ profile.isActive ? 'active' : 'disable' }}</div>
+            </div>
+
             <button type="submit" class="btn">Save changes</button>
 
             {{ form_end(profileForm) }}
