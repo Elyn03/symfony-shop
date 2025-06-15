@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Message\GivePointsMessage;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class UserController extends AbstractController
@@ -35,17 +37,10 @@ final class UserController extends AbstractController
     }
 
     #[Route('/user/give/points', name: 'app_user_give_points', methods: ['POST'])]
-    public function givePoints(EntityManagerInterface $entityManager): Response
+    public function givePoints(MessageBusInterface $messageBus): Response
     {
-        $activeUsers = $entityManager->getRepository(User::class)->findBy(['isActive' => true]);
-
-        foreach ($activeUsers as $user) {
-            $user->setPoints($user->getPoints() + 1000);
-        }
-
-        $entityManager->flush();
-        $this->addFlash('success', 'Tous les utilisateurs actifs ont reçu +1000 points.');
-
+        $message = new GivePointsMessage(1000);
+        $messageBus->dispatch($message);
         return $this->redirectToRoute('app_user');
     }
 }
