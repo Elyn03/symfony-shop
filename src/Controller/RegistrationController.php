@@ -28,7 +28,6 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setRoles(['ROLE_USER']);
-            $user->setCreatedAt(new \DateTime());
             $user->setIsActive(true);
             $user->setPoints(1000);
 
