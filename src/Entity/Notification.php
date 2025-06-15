@@ -2,12 +2,23 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\NotificationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
 
 #[ORM\Entity(repositoryClass: NotificationRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    operations: [
+        new Get(
+            security: "is_granted('ROLE_ADMIN')"
+        ),
+        new GetCollection(
+            security: "is_granted('ROLE_ADMIN')"
+        )
+    ]
+)]
 class Notification
 {
     #[ORM\Id]
