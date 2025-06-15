@@ -50,23 +50,16 @@ a {
     grid-template-columns: repeat(3, 30%);
     gap: 24px;
 }
-.products-container {
-    height: auto;
-    grid-template-columns: repeat(2, 45%) !important;
-}
 .item-card {
     padding: 12px;
     background-color: var(--au-lait);
     border-radius: 50px 50px 25px 25px;
     width: 100%;
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     gap: 12px;
     justify-content: space-between;
-}
-.products-container .item-image {
-    height: 25% !important;
 }
 .item-image, .user-image {
     width: 100%;
@@ -82,7 +75,6 @@ a {
 .item-texts {
     padding: 0 12px;
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
