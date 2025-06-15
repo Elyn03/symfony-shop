@@ -58,6 +58,9 @@
         .delete {
             background-color: #597B7E;
         }
+        .create {
+            background-color: #396e73;
+        }
 
         .notification-title {
             font-weight: bold;
@@ -76,8 +79,22 @@
                     <i class="fa-solid fa-bell"></i>
                     <div class="notification-card">
                         <div class="notification-info">
-                            <div class="notification-type {{ notification.label['type'] == "PRODUCT_UPDATED" ? 'edit' : notification.label['type'] == "PRODUCT_BOUGHT" ? 'buy' : 'delete' }}">
-                                {{ notification.label['type'] == "PRODUCT_UPDATED" ? ('edit_label'|trans) : notification.label['type'] == "PRODUCT_BOUGHT" ? ('buy_label'|trans) : ('buy_label'|trans) }}
+                            {% set classes = {
+                                'PRODUCT_UPDATED': 'edit',
+                                'PRODUCT_BOUGHT': 'buy',
+                                'PRODUCT_DELETED': 'delete',
+                                'PRODUCT_CREATED': 'create'
+                            } %}
+
+                            {% set labels = {
+                                'PRODUCT_UPDATED': 'edit_label'|trans,
+                                'PRODUCT_BOUGHT': 'buy_label'|trans,
+                                'PRODUCT_DELETED': 'delete_label'|trans,
+                                'PRODUCT_CREATED': 'created_label'|trans
+                            } %}
+
+                            <div class="notification-type {{ classes[notification.label['type']]|default('default-class') }}">
+                                {{ labels[notification.label['type']]|default('default_label'|trans) }}
                             </div>
                             <span>{{ notification.label['date']['date']|date('d F Y, H:i') }}</span>
                         </div>

@@ -33,7 +33,7 @@ final class DetailProductController extends AbstractController
         $entityManager->persist($product);
         $entityManager->flush();
 
-        $sendNotification->sendNotification($user, "PRODUCT_BOUGHT", $product->getName(), $entityManager);
+        $sendNotification->sendNotification($user, "PRODUCT_BOUGHT", $product->getName());
 
 
         return $this->redirectToRoute('app_detail_product', ['id' => $id]);

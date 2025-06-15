@@ -4,24 +4,34 @@ namespace App\Service;
 
 use App\Entity\Notification;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class SendNotification
 {
-    public function sendNotification($user, $type, $productName, EntityManagerInterface $entityManager): void
+    public function  __construct(private EntityManagerInterface $entityManager, private TranslatorInterface $translator)
+    {
+        $this->entityManager = $entityManager;
+        $this->translator = $translator;
+    }
+
+    public function sendNotification($user, $type, $item): void
     {
         $title = "";
         switch ($type) {
             case "PRODUCT_UPDATED":
-                $title = $productName . " a été modifié!";
+                $title = $item . " " . $this->translator->trans('notification.updated');
                 break;
             case "PRODUCT_BOUGHT":
-                $title = $productName . " a été acheté!";
+                $title = $item . " " . $this->translator->trans('notification.bought');
                 break;
             case "PRODUCT_DELETED":
-                $title = $productName . " a été supprimé!";
+                $title = $item . " " . $this->translator->trans('notification.deleted');
+                break;
+            case "PRODUCT_CREATED":
+                $title = $this->translator->trans('notification.created') . " " . $item;
                 break;
             default:
-                $title = "not found";
+                $title = $this->translator->trans('notification.default');
                 break;
         }
 
@@ -36,8 +46,8 @@ class SendNotification
         $notice->setCreatedAt(new \DateTime());
         $notice->setLabel($label);
 
-        $entityManager->persist($notice);
-        $entityManager->flush();
+        $this->entityManager->persist($notice);
+        $this->entityManager->flush();
     }
 
 }

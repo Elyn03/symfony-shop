@@ -14,19 +14,19 @@ use Symfony\Component\Routing\Attribute\Route;
 final class ProductController extends AbstractController
 {
     #[Route('/product', name: 'app_product')]
-    public function index(Request $request, EntityManagerInterface $entityManager): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, SendNotification $sendNotification): Response
     {
         $product = new Product();
         $createForm = $this->createForm(ProductForm::class, $product);
         $createForm->handleRequest($request);
 
         if ($createForm->isSubmitted() && $createForm->isValid()) {
-            $product->setCreatedAt(new \DateTime());
             $product->setUser($this->getUser());
 
             $entityManager->persist($product);
             $entityManager->flush();
 
+            $sendNotification->sendNotification($this->getUser(), "PRODUCT_CREATED", $product->getName());
             return $this->redirectToRoute('app_product');
         }
 
@@ -58,7 +58,7 @@ final class ProductController extends AbstractController
             $entityManager->remove($product);
             $entityManager->flush();
 
-            $sendNotification->sendNotification($this->getUser(), "PRODUCT_DELETED", $product->getName(), $entityManager);
+            $sendNotification->sendNotification($this->getUser(), "PRODUCT_DELETED", $product->getName());
             return $this->redirectToRoute('app_product');
         }
 
@@ -68,7 +68,7 @@ final class ProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            $sendNotification->sendNotification($this->getUser(), "PRODUCT_UPDATED", $product->getName(), $entityManager);
+            $sendNotification->sendNotification($this->getUser(), "PRODUCT_UPDATED", $product->getName());
         }
 
         return $this->redirectToRoute('app_product');
