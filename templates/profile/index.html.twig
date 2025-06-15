@@ -40,7 +40,7 @@
 
 {% block body %}
     <div class="content">
-        <h1>Welcome back {{ profile.firstName }} {{ profile.lastName }} ✨</h1>
+        <h1>{% trans %}welcome{% endtrans %} {{ profile.firstName }} {{ profile.lastName }} ✨</h1>
 
         <div class="profile-container">
             <img src="{{ asset("images/user.jpg") }}" alt="">
@@ -49,33 +49,32 @@
 
             <div class="form-row">
                 {{ form_label(profileForm.lastName) }}
-                {{ form_widget(profileForm.lastName, {'attr': {'placeholder': 'Last name'}}) }}
+                {{ form_widget(profileForm.lastName) }}
             </div>
 
             <div class="form-row">
                 {{ form_label(profileForm.firstName) }}
-                {{ form_widget(profileForm.firstName, {'attr': {'placeholder': 'First name'}}) }}
+                {{ form_widget(profileForm.firstName) }}
             </div>
 
             <div class="form-row">
-                <label>Email</label>
+                <label>{% trans %}form.email{% endtrans %}</label>
                 <div class="static-field">{{ profile.email }}</div>
             </div>
 
             <div class="form-row">
-                <label>Points</label>
+                <label>{% trans %}form.points{% endtrans %}</label>
                 <div class="static-field">{{ profile.points }}</div>
             </div>
 
             <div class="form-row">
-                <label>Compte</label>
-                <div class="static-field">{{ profile.isActive ? 'active' : 'disable' }}</div>
+                <label>{% trans %}form.account{% endtrans %}</label>
+                <div class="static-field">{{ profile.isActive ? ('form.active'|trans) : ('form.disabled'|trans) }}</div>
             </div>
 
-            <button type="submit" class="btn">Save changes</button>
+            <button type="submit" class="btn">{% trans %}form.save_btn{% endtrans %}</button>
 
             {{ form_end(profileForm) }}
-
         </div>
     </div>
 {% endblock %}

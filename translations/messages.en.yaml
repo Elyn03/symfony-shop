@@ -1,0 +1,69 @@
+home: Welcome to VivaMode
+welcome: Hello
+sign_in: Sign in
+sign_up: Sign up
+sign_in_text: Already registered? Sign in
+sign_up_text: No account? Sign up
+form:
+    name: Name
+    name_placeholder: Enter the product name
+    last_name: Last name
+    last_name_placeholder: Enter your last name
+    first_name: First name
+    first_name_placeholder: Enter your first name
+    email: Email
+    email_placeholder: Enter your email
+    password: Password
+    password_placeholder: Enter a password
+    points: Points
+    account: Account
+    agree_terms: Agree to the terms
+    description: Description
+    description_placeholder: Write your product description
+    price: Price
+    price_placeholder: Product price
+    category: Category
+    casual: Casual
+    sporty: Sporty
+    boho: Boho
+    streetwear: Streetwear
+    formal: Formal
+    create_btn: Create new product
+    save_btn: Save
+    delete_btn: Delete
+    active: Active
+    disabled: Disabled
+products: All products
+enabled_account: All products
+points: pts
+created_at: Added on
+buy: Buy
+notifications: All notifications
+no_notifications: You have no notifications at the moment
+buy_label: Purchase
+delete_label: Deletion
+edit_label: Edit
+give_points: Give 1000 points to all active users
+menu:
+    users: Users
+    products: Products
+    notifications: Notifications
+    profile: Profile
+footer:
+    tagline: Fashion made for you. Trendy clothes, comfort and style combined.
+    about: About
+    our_story: Our story
+    team: Team
+    stores: Stores
+    careers: Careers
+    help: Help
+    customer_service: Customer service
+    returns: Returns
+    order_tracking: Order tracking
+    faq: FAQ
+    legal_info: Legal information
+    terms_and_conditions: Terms and conditions
+    privacy_policy: Privacy policy
+    cookies: Cookies
+    legal_notice: Legal notice
+    copyright: All rights reserved.

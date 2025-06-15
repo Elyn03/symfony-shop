@@ -1,0 +1,70 @@
+home: Bienvenue sur VivaMode
+welcome: Bonjour
+sign_in: Se connecter
+sign_up: S'inscrire
+sign_in_text: Déjà inscris ? Connectez-vous
+sign_up_text: Pas de compte ? Inscrivez-vous
+form:
+    name: Nom
+    name_placeholder: Entrez le nom du produit
+    last_name: Nom de famille
+    last_name_placeholder: Entrez votre nom
+    first_name: Prénom
+    first_name_placeholder: Entrez votre prénom
+    email: Email
+    email_placeholder: Entrez votre email
+    password: Mot de passe
+    password_placeholder: Entrez un mot de passe
+    points: Points
+    account: Compte
+    agree_terms: Accepter les conditions
+    description: Description
+    description_placeholder: Rédigez la description de votre produit
+    price: Prix
+    price_placeholder: Prix du produit
+    category: Catégorie
+    casual: Décontracté
+    sporty: Sportif
+    boho: Bohème
+    streetwear: Streetwear
+    formal: Formel
+    create_btn: Créer un nouveau produit
+    save_btn: Enregistrer
+    delete_btn: Supprimer
+    active: Active
+    disabled: Désactivé
+products: Tous les produits
+enabled_account: Tous les produits
+points: pts
+created_at: Ajouté le
+buy: Acheter
+notifications: Toutes les notifications
+no_notifications: Vous n'avez aucune notification pour le moment
+buy_label: Achat
+delete_label: Suppression
+edit_label: Modification
+give_points: Donner 1000 points à tous les comptes actives
+menu:
+    users: Utilisateurs
+    products: Produits
+    notifications: Notifications
+    profile: Profil
+footer:
+    tagline: La mode à votre image. Vêtements tendance, confort et style réunis.
+    about: À propos
+    our_story: Notre histoire
+    team : Équipe
+    stores: Boutiques
+    careers: Carrières
+    help: Aide
+    customer_service: Service client
+    returns: Retours
+    order_tracking: Suivi de commande
+    faq: FAQ
+    legal_info: Informations légales
+    terms_and_conditions: Conditions générales
+    privacy_policy: Politique de confidentialité
+    cookies: Cookies
+    legal_notice: Mentions légales
+    copyright: Tous droits réservés.
+

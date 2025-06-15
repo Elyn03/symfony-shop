@@ -54,7 +54,9 @@
     <div class="content">
         <div class="product-header">
             <h1>{{ product.name }}</h1>
-            <div class="product-date">Ajouté le {{ product.createdAt|date("d/m/Y") }}</div>
+            <div class="product-date">
+                {% trans %}created_at{% endtrans%} {{ product.createdAt|date("d/m/Y") }}
+            </div>
         </div>
 
         <div class="product-description">
@@ -62,13 +64,13 @@
         </div>
 
         <div class="product-price">
-            {{ product.price }} pts
+            {{ product.price }} {% trans %}points{% endtrans %}
         </div>
 
         <form class="activate-form" action="{{ path('app_buy_product', { id: product.id }) }}" method="post">
             <button class="activate-button" type="submit">
                 <i class="fa-solid fa-cart-plus"></i>
-                Ajouter au panier
+                {% trans %}uy{% endtrans %}
             </button>
         </form>
     </div>

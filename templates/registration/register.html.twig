@@ -10,7 +10,7 @@
 {% block body %}
 <div class="content">
     <div class="register-form">
-        <h1>Register</h1>
+        <h1>{% trans %}sign_up{% endtrans %}</h1>
 
         {{ form_start(registrationForm) }}
 
@@ -41,9 +41,11 @@
             {{ form_widget(registrationForm.agreeTerms) }}
         </div>
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn">
+            {% trans %}sign_up{% endtrans %}
+        </button>
 
-        <a href="{{ path('app_login') }}" class="sign-link">Already have an account ? Sign in</a>
+        <a href="{{ path('app_login') }}" class="sign-link">{% trans %}sign_in_text{% endtrans %}</a>
 
         {{ form_end(registrationForm) }}
     </div>

@@ -16,10 +16,10 @@
 
 <div class="content">
     {% if app.user and app.user.isActive is not true %}
-        <div class="inactivate-band">Vous avez été désactivé</div>
+        <div class="inactivate-band"></div>
     {% endif %}
 
-    <h1>Welcome to VivaMode</h1>
+    <h1>{% trans %}home{% endtrans %} 👋</h1>
 
     <div class="items-container">
         {% for product in allProducts %}
@@ -31,7 +31,7 @@
                         <p>{{ product.description }}</p>
                     </div>
                     <div class="info-two">
-                        <span>{{ product.price }} pts</span>
+                        <span>{{ product.price }} {% trans %}points{% endtrans %}</span>
                         <a href={{ path('app_detail_product', { id: product.id}) }}>
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>

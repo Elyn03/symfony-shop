@@ -71,39 +71,39 @@
 {% block body %}
 <div class="content">
     <div class="create-form-container">
-        <h1>Create new article</h1>
+        <h1>{% trans %}form.create_btn{% endtrans %}</h1>
 
-        {{ form_start(create_product_form, {'attr': {'class': 'product-form'}}) }}
+        {{ form_start(create_product_form) }}
 
         <div class="form-row">
             {{ form_label(create_product_form.name) }}
-            {{ form_widget(create_product_form.name, {'attr': {'placeholder': 'Enter product name'}}) }}
+            {{ form_widget(create_product_form.name) }}
         </div>
 
         <div class="form-row">
             {{ form_label(create_product_form.description) }}
-            {{ form_widget(create_product_form.description, {'attr': {'placeholder': 'Write your product description'}}) }}
+            {{ form_widget(create_product_form.description) }}
         </div>
 
         <div class="form-row">
             {{ form_label(create_product_form.price) }}
-            {{ form_widget(create_product_form.price, {'attr': {'placeholder': 'Product price'}}) }}
+            {{ form_widget(create_product_form.price) }}
         </div>
 
         <div class="form-row">
             {{ form_label(create_product_form.category) }}
-            {{ form_widget(create_product_form.category, {'attr': {'placeholder': 'Product category'}}) }}
+            {{ form_widget(create_product_form.category) }}
         </div>
 
         <button type="submit" class="btn">
-            Create new product
+            {% trans %}form.create_btn{% endtrans %}
         </button>
 
         {{ form_end(create_product_form) }}
     </div>
 
     <div class="edit-form-container">
-        <h1>All products</h1>
+        <h1>{% trans %}products{% endtrans %} 🛍️</h1>
         <div class="products-container">
             {% for product in products %}
                 <div class="item-card">
@@ -117,8 +117,8 @@
                         {{ form_row(edit_product_form[product.id].price) }}
                         {{ form_row(edit_product_form[product.id].category) }}
                         <div class="action-container">
-                            <button type="submit" name="action" value="save" class="btn-save">Save</button>
-                            <button type="submit" name="action" value="delete" class="btn-delete">Delete</button>
+                            <button type="submit" name="action" value="save" class="btn-save">{% trans %}form.save_btn{% endtrans %}</button>
+                            <button type="submit" name="action" value="delete" class="btn-delete">{% trans %}form.delete_btn{% endtrans %}</button>
                         </div>
                         {{ form_end(edit_product_form[product.id]) }}
                     </div>

@@ -78,8 +78,8 @@
 <footer>
     <div class="footer-container">
         <div class="footer-viva">
-            <div class="footer-logo">VivaStyle</div>
-            <p>La mode à votre image. Vêtements tendance, confort et style réunis.</p>
+            <div class="footer-logo">VivaMode</div>
+            <p>{% trans %}footer.tagline{% endtrans %}</p>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -89,38 +89,38 @@
 
         <div class="footer-general-infos">
             <div class="footer-section">
-                <h3>À propos</h3>
+                <h3>{% trans %}footer.about{% endtrans %}</h3>
                 <ul>
-                    <li><a href="#">Notre histoire</a></li>
-                    <li><a href="#">Équipe</a></li>
-                    <li><a href="#">Boutiques</a></li>
-                    <li><a href="#">Carrières</a></li>
+                    <li><a href="#">{% trans %}footer.our_story{% endtrans %}</a></li>
+                    <li><a href="#">{% trans %}footer.team{% endtrans %}</a></li>
+                    <li><a href="#">{% trans %}footer.stores{% endtrans %}</a></li>
+                    <li><a href="#">{% trans %}footer.careers{% endtrans %}</a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
-                <h3>Aide</h3>
+                <h3>{% trans %}footer.help{% endtrans %}</h3>
                 <ul>
-                    <li><a href="#">Service client</a></li>
-                    <li><a href="#">Retours</a></li>
-                    <li><a href="#">Suivi de commande</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">{% trans %}footer.customer_service{% endtrans %}</a></li>
+                    <li><a href="#">{% trans %}footer.returns{% endtrans %}</a></li>
+                    <li><a href="#">{% trans %}footer.order_tracking{% endtrans %}</a></li>
+                    <li><a href="#">{% trans %}footer.faq{% endtrans %}</a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
-                <h3>Informations légales</h3>
+                <h3>{% trans %}footer.legal_info{% endtrans %}</h3>
                 <ul>
-                    <li><a href="#">Conditions générales</a></li>
-                    <li><a href="#">Politique de confidentialité</a></li>
-                    <li><a href="#">Cookies</a></li>
-                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">{% trans %}footer.terms_and_conditions{% endtrans %}</a></li>
+                    <li><a href="#">{% trans %}footer.privacy_policy{% endtrans %}</a></li>
+                    <li><a href="#">{% trans %}footer.cookies{% endtrans %}</a></li>
+                    <li><a href="#">{% trans %}footer.legal_notice{% endtrans %}</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="footer-bottom">
-        © {{ "now"|date("Y") }} VivaStyle. Tous droits réservés.
+        © {{ "now"|date("Y") }} VivaStyle. {% trans %}footer.copyright{% endtrans %}
     </div>
 </footer>

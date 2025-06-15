@@ -68,17 +68,16 @@
 
 {% block body %}
     <div class="content">
-        <h1>Latest Notifications 📬</h1>
+        <h1>{% trans %}notifications{% endtrans %} 📬</h1>
 
         <div class="notification-list">
             {% for notification in notifications %}
-
                 <div class="notification">
                     <i class="fa-solid fa-bell"></i>
                     <div class="notification-card">
                         <div class="notification-info">
                             <div class="notification-type {{ notification.label['type'] == "PRODUCT_UPDATED" ? 'edit' : notification.label['type'] == "PRODUCT_BOUGHT" ? 'buy' : 'delete' }}">
-                                {{ notification.label['type'] == "PRODUCT_UPDATED" ? 'Modification' : notification.label['type'] == "PRODUCT_BOUGHT" ? 'Achat' : 'Suppression' }}
+                                {{ notification.label['type'] == "PRODUCT_UPDATED" ? ('edit_label'|trans) : notification.label['type'] == "PRODUCT_BOUGHT" ? ('buy_label'|trans) : ('buy_label'|trans) }}
                             </div>
                             <span>{{ notification.label['date']['date']|date('d F Y, H:i') }}</span>
                         </div>
@@ -89,7 +88,7 @@
                 </div>
             {% else %}
                 <div class="notification">
-                    <span class="notification-title">You have no notifications for now.</span>
+                    <span class="notification-title">{% trans %}no_notifications{% endtrans %}</span>
                 </div>
             {% endfor %}
         </div>

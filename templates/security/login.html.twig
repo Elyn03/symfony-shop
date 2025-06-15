@@ -13,35 +13,24 @@
     <div class="register-form">
 
         <form method="post">
-            {% if error %}
-                <div class="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
-
-            {% if app.user %}
-                <div class="mb-3">
-                    You are logged in as {{ app.user.userIdentifier }},
-                    <a href="{{ path('app_logout') }}">Logout</a>
-                </div>
-            {% endif %}
-
-            <h1>Please sign in</h1>
+            <h1>{% trans %}sign_in{% endtrans %}</h1>
 
             <div class="register-form-row">
-                <label for="username">Email</label>
+                <label for="username">{% trans %}form.email{% endtrans %}</label>
                 <input type="email" value="{{ last_username }}" name="_username" id="username" autocomplete="email" required autofocus>
             </div>
 
             <div class="register-form-row">
-                <label for="password">Password</label>
+                <label for="password">{% trans %}form.password{% endtrans %}</label>
                 <input type="password" name="_password" id="password" autocomplete="current-password" required>
             </div>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            <button class="btn" type="submit">Sign in</button>
+            <button class="btn" type="submit">{% trans %}sign_in{% endtrans %}</button>
 
 
-            <a href="{{ path('app_register') }}" class="sign-link">No account yet ? Register</a>
+            <a href="{{ path('app_register') }}" class="sign-link">{% trans %}sign_up_text{% endtrans %}</a>
 
         </form>
 

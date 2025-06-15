@@ -39,6 +39,11 @@
     .points-pill i {
         color: var(--au-lait);
     }
+
+    .language-pill {
+        background-color: var(--au-lait);
+        border-radius: 12px;
+    }
 </style>
 
 <nav>
@@ -46,35 +51,40 @@
         <img class="menu-logo" src="{{ asset("images/logo.svg") }}" alt="VivaMode">
     </a>
     <ul class="menu-container">
+        <li class="language-pill">
+            <a href="{{ path('app_home_language') }}">
+                {{ app.request.locale }}
+            </a>
+        </li>
         <li>
             <a href="{{ path('app_user') }}">
                 <i class="fa-solid fa-users"></i>
-                All users
+                {% trans %}menu.users{% endtrans %}
             </a>
         </li>
         <li>
             <a href="{{ path('app_product') }}">
                 <i class="fa-solid fa-cart-shopping"></i>
-                All products
+                {% trans %}menu.products{% endtrans %}
             </a>
         </li>
         <li>
             <a href="{{ path('app_notification') }}">
                 <i class="fa-solid fa-bell"></i>
-                Notifications
+                {% trans %}menu.notifications{% endtrans %}
             </a>
         </li>
 
         <li>
             <a href="{{ path('app_profile') }}">
                 <i class="fa-solid fa-user"></i>
-                My profile
+                {% trans %}menu.profile{% endtrans %}
             </a>
         </li>
         {% if app.user %}
             <li class="points-pill">
                 <i class="fa-solid fa-wallet"></i>
-                {{ app.user.points }}pts
+                {{ app.user.points }} {% trans %}points{% endtrans %}
             </li>
         {% endif %}
     </ul>
